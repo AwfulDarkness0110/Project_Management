@@ -2,7 +2,13 @@ const express = require("express");
 const { asyncHandler } = require("./utilities/utils");
 const { requireAuth } = require("./utilities/auth");
 const { check, validationResult } = require("express-validator");
-const { Team, UserTeam, User, Project, UserProject } = require("../../db/models");
+const {
+  Team,
+  UserTeam,
+  User,
+  Project,
+  UserProject,
+} = require("../../db/models");
 
 const router = express.Router();
 //Authenticates user before being able to use API
@@ -112,7 +118,9 @@ router.post(
   "/user/:userId",
   asyncHandler(async (req, res, next) => {
     const user_id = req.params.userId;
+    console.log(user_id);
     const { description, name } = req.body;
+    console.log(description, name);
     if (description) {
       const team = await Team.create({
         description: description,

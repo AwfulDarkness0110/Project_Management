@@ -16,6 +16,7 @@ import { Context as ProjectContext } from "../context/store/ProjectStore";
 import { Context as TeamContext } from "../context/store/TeamStore";
 
 import apiServer from "../config/apiServer";
+import AdminProjectPage from "./Pages/AdminProjects";
 
 const AuthRoutes = () => {
   const [sidebar, setSidebar] = useState(true);
@@ -76,6 +77,7 @@ const AuthRoutes = () => {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/tasks" component={NewTasksPage} />
             <Route exact path="/projects" component={ProjectsPage} />
+            <Route exact path="/admin" component={AdminProjectPage} />
 
             {/* <Route
               path="/team/:teamId/project/:projectId/:projectName"

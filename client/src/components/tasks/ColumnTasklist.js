@@ -16,6 +16,7 @@ const ColumnTasklist = ({
   showSideTaskDetails,
   sideTaskDetails,
   showSideTaskForm,
+  addButtonVisible = true,
 }) => {
   const { projectId } = useParams();
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
@@ -145,13 +146,15 @@ const ColumnTasklist = ({
               )}
             </Droppable>
 
-            <div
-              className="tasklist-new-task--button"
-              // onClick={openTaskProjectFormModal}
-              onClick={handleAddTaskClick}
-            >
-              + Add task
-            </div>
+            {addButtonVisible && (
+              <div
+                className="tasklist-new-task--button"
+                // onClick={openTaskProjectFormModal}
+                onClick={handleAddTaskClick}
+              >
+                + Add task
+              </div>
+            )}
           </div>
         )}
       </Draggable>

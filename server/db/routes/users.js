@@ -81,18 +81,25 @@ router.post(
         email: email,
       },
     });
+
     if (existingUser) {
       res.status(422).send({ Error: "User already exists" });
       return;
     }
 
-    const user = await User.create({
-      name: name,
-      email: email,
-      hashed_password: hashedPassword,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
+    let user;
+
+    try {
+      user = await User.create({
+        name: name,
+        email: email,
+        hashed_password: hashedPassword,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    } catch (e) {
+      console.log(e);
+    }
 
     const token = getUserToken(user);
 

@@ -3,7 +3,7 @@ import { backendUrl } from "./index";
 
 const instance = axios.create({
   // baseURL: backendUrl,
-  baseURL: "https://methodic-backend.herokuapp.com/",
+  baseURL: "http://localhost:5000/",
 });
 
 instance.interceptors.request.use(
