@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { NotificationContainer } from "react-notifications";
 import Routes from "./components/Routes";
 import AuthContext from "./context/AuthContext";
 import UserStore from "./context/store/UserStore";
@@ -24,6 +25,17 @@ const App = () => {
     setEmail(null);
     setUserId(null);
   };
+
+  // const triggerNotification = (text, title, type) => {
+  //   const { actions } = useContext(AlertContext);
+  //   actions.addAlert({
+  //     text: text,
+  //     title: title,
+  //     type: type,
+  //     id: Date.now(), // lazy way of adding unique id per alert
+  //   });
+  // };
+
   const context = {
     auth,
     setAuth,

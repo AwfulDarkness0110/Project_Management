@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Modal, responsiveFontSizes } from "@material-ui/core";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 
 import apiServer from "../../config/apiServer";
 import Loader from "../Loader";
@@ -16,7 +14,20 @@ import "../../css/TaskList.css";
 import ColumnTasklist from "../tasks/ColumnTasklist";
 import Add from "../../assets/Add";
 
+import { makeStyles } from "@material-ui/core/styles";
+import { Card, CardContent, Box, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "100%",
+    display: "flex",
+    borderRadius: "10px"
+  }
+});
+
 const AdminProjectPage = ({ sidebar }) => {
+  const classes = useStyles();
+
   //   const { projectId, projectName, teamId } = useParams();
   const projectId = 1;
   const projectName = "Database Project";
@@ -87,26 +98,58 @@ const AdminProjectPage = ({ sidebar }) => {
     );
   });
 
+  const myboxStyle = {
+    width: "20%",
+    backgroundColor: "#c7c7c745"
+  }
+
+  const myCardContentStyle = {
+    width: "80%"
+  }
+
   const render_projectDetail = () => (
-    <div className="project-page-container">
+    <div className="project-page-admin-container">
       <div className="project-page-main-content">
-        <DragDropContext>
-          <Droppable
-            droppableId="all-columns"
-            direction="horizontal"
-            type="column"
-          >
-            {(provided) => (
-              <div
-                className="project-container"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
+        <Card className={classes.root}>
+          <Box sx={{ display: "flex", flexDirection: "column" }} style={myboxStyle}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                CardContent example
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                This Card's children are wrapped in a CardContent component,
+                which adds 16px of padding around the edges. The last
+                CardContent in a group of children will get 24px of padding on
+                the bottom.
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                This Card's children are wrapped in a CardContent component,
+                which adds 16px of padding around the edges. The last
+                CardContent in a group of children will get 24px of padding on
+                the bottom.
+              </Typography>
+            </CardContent>
+          </Box>
+          <CardContent style={myCardContentStyle}>
+            <DragDropContext>
+              <Droppable
+                droppableId="all-columns"
+                direction="horizontal"
+                type="column"
               >
-                {renderedTasklists}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+                {(provided) => (
+                  <div
+                    className="project-admin-container"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {renderedTasklists}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </CardContent>
+        </Card>
 
         {sideTaskDetails && taskState.selectedTask ? (
           <PopOutTaskDetails
@@ -119,7 +162,7 @@ const AdminProjectPage = ({ sidebar }) => {
   );
 
   //----------------------------------------------Project
-  return <></>;
+  return <>{render_projectDetail()}</>;
 };
 
 export default AdminProjectPage;

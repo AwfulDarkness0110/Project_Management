@@ -250,6 +250,7 @@
   box-sizing: border-box;
   height: 100%;
 }
+
 .project-page-main-content {
   display: contents;
 }
@@ -261,4 +262,18 @@
   height: 100%;
   width: 100%;
   overflow: scroll;
+}
+
+.project-page-admin-container {
+  display: flex;
+  padding: 20px 15px 15px 15px;
+  flex-direction: column-reverse;
+}
+
+.project-admin-container {
+  display: flex;
+  padding: 11px;
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
 }

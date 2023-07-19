@@ -19,6 +19,39 @@ module.exports = {
         references: { model: "Teams" },
         onDelete: "CASCADE",
       },
+
+      description: {
+        type: Sequelize.STRING(5000),
+        allowNull: true,
+      },
+      category: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      priority: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      status: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      start_date: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      accepted_date: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      budget: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      misc: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

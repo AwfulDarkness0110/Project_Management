@@ -195,18 +195,37 @@ router.post(
   asyncHandler(async (req, res, next) => {
     //need to add owner for project
     const team_id = req.params.id;
-    const { name, userId } = req.body;
+    const {
+      name,
+      userId,
+      description,
+      category,
+      priority,
+      accepted_date,
+      budget,
+      misc,
+    } = req.body;
+
+    const start_date = new Date();
+
     const project = await Project.create({
       name: name,
       team_id: team_id,
+      description: description,
+      category: category,
+      priority: priority,
+      start_date: start_date,
+      accepted_date: accepted_date,
+      budget: budget,
+      misc: misc,
     });
 
     if (project) {
-      const userproject = await UserProject.create({
+      const userProject = await UserProject.create({
         user_id: userId,
         project_id: project.id,
       });
-      res.json(userproject).status(201);
+      res.json(userProject).status(201);
     } else {
       res.status(404);
     }
